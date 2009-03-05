@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<message_catalog package_key="learning-content" package_version="0.1d1" locale="es_GT" charset="ISO-8859-1">
+
+<msg key="add_section">Agregar Sección</msg>
+<msg key="add_unit">Agregar una Unidad/Capitulo nuevo.</msg>
+<msg key="admin_portlet_element_pretty_name">Portlet Contenido</msg>
+<msg key="admin_portlet_pretty_name">Administracion de contenido</msg>
+<msg key="back">Anterior</msg>
+<msg key="can_delete">Puede Eliminar esta seccion si desea</msg>
+<msg key="content">Contenido</msg>
+<msg key="decreasing">Desender</msg>
+<msg key="delete_section">Eliminar Sección</msg>
+<msg key="e_welcome">Bienvenido a la sección de contenido de tu curso.</msg>
+<msg key="e_welcome_body">Aquí encontrarás el material de estudio que tu  catedrático ha subido.
+	Si tienes dudas de como usar esta aplicación puedes consultar el manual </msg>
+<msg key="edit_header">Editar Página de Encabezado</msg>
+<msg key="edit_index">Editar Indice de contenido</msg>
+<msg key="edit_name">Editar Nombre</msg>
+<msg key="home">Inicio</msg>
+<msg key="increasing">Incrementar</msg>
+<msg key="index_page">Indice de contenido</msg>
+<msg key="mapped_objects">Esta sección NO puede ser borrada, ya que tiene elementos.</msg>
+<msg key="Name">Nombre</msg>
+<msg key="New">Nuevo</msg>
+<msg key="new_content_admin_portlet">Nuevo %element_pretty_name%</msg>
+<msg key="new_seccion">Nueva Sección</msg>
+<msg key="next">Siguiente</msg>
+<msg key="unit_descirption">Cada Unidad o Capitulo se divide en las siguiente secciones:&lt;br /&gt;&lt;ul&gt;
+	&lt;li&gt; Introducción&lt;/li&gt;
+	&lt;li&gt; Contenido&lt;/li&gt;
+	&lt;li&gt; Actividades&lt;/li&gt;
+	&lt;li&gt; Glosario&lt;/li&gt;
+	&lt;li&gt; Anexo&lt;/li&gt;
+	&lt;/ul&gt;
+	Dichas secciones pueden cambiarse una vez creada la Unidad /
+	Capitulo. Y se puede crear adicionalmente nuevas sub-secciones.
+</msg>
+<msg key="welcome">Bienvenido al editor de contenido web de aLF</msg>
+<msg key="welcome_body">En esta sección usted podrá crear contenido web para su curso </msg>
+<msg key="page_increasing">Mover Hacia Abajo</msg>
+<msg key="page_decreasing">Mover Hacia Arriba</msg>
+<msg key="edit_content_index">Editar Indice de Contenido</msg>
+<msg key="copy_content_to">Copiar Contenido A:</msg>
+<msg key="my_classes">Mis Clases</msg>
+<msg key="my_communities">Mis Comunidades</msg>
+<msg key="copy">Copiar</msg>
+<msg key="edit">Editar</msg>
+<msg key="new_unit">Agregar Nueva Unidad</msg>
+<msg key="add_folder">Agregar Folder</msg>
+<msg key="delete_folder">Eliminar Folder</msg>
+<msg key="edit_title">Editar Titulo del Contenido</msg>
+<msg key="yes">Si</msg>
+<msg key="no">No</msg>
+<msg key="show_header">Mostrar Encabezado:</msg>
+<msg key="go_to">Ver P&aacute;ginas de:</msg>
+<msg key="admin_pages_of">Administrar P&aacute;ginas de :</msg>
+<msg key="view_content">Ver Contenido Copiado</msg>
+<msg key="admin_content_options">Administrar el Contenido</msg>
+
+</message_catalog>

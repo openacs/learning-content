@@ -1,0 +1,15 @@
+.margin-form .form-item-wrapper .form-label {
+	display:inline;
+	float:none;
+	text-align:none;
+	width:0;
+}
+
+.margin-form .form-item-wrapper .form-widget, .margin-form .form-button, .margin-form div.form-help-text {
+	display:block;
+	margin-left:0;
+}
+
+#xowikicmds {
+/*	margin-top: 15px;*/
+}

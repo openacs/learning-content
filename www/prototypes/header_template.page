@@ -1,0 +1,6 @@
+::xowiki::PageTemplate new -title "Header Template" -text {
+
+<center>
+<h1 style="border: 0px none ;"> @titulo@
+</h1> </center>
+}

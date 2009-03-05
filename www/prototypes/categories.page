@@ -1,0 +1,6 @@
+::xowiki::Page new -title "categories" -text {
+{{adp /packages/learning-content/www/content-categories {skin plain-include open_page 0} }}
+}
+
+
+

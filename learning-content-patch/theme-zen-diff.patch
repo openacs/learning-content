@@ -1,0 +1,39 @@
+diff -crBN theme-zen-54/lib/lrn-master.adp theme-zen/lib/lrn-master.adp
+*** theme-zen-54/lib/lrn-master.adp	2009-01-23 15:56:22.000000000 -0600
+--- theme-zen/lib/lrn-master.adp	2009-01-23 16:01:19.000000000 -0600
+***************
+*** 91,98 ****
+      <div class="block-marker">#theme-zen.begin_main_content#</div>
+      <div id="inner-wrapper">
+  
+!       <if @user_messages:rowcount@ gt 0>
+          <div id="alert-message">
+            <multiple name="user_messages">
+              <div class="alert"><strong>@user_messages.message;noquote@</strong></div>
+            </multiple>
+--- 91,101 ----
+      <div class="block-marker">#theme-zen.begin_main_content#</div>
+      <div id="inner-wrapper">
+  
+!       <if @user_messages:rowcount@ gt 0 or @content_alert_message@ ne "">
+          <div id="alert-message">
++           <if @content_alert_message@ ne "">
++             <div class="alert"><strong>@content_alert_message;noquote@</strong></div>
++           </if>
+            <multiple name="user_messages">
+              <div class="alert"><strong>@user_messages.message;noquote@</strong></div>
+            </multiple>
+diff -crBN theme-zen-54/lib/lrn-master.tcl theme-zen/lib/lrn-master.tcl
+*** theme-zen-54/lib/lrn-master.tcl	2009-01-23 15:56:22.000000000 -0600
+--- theme-zen/lib/lrn-master.tcl	2009-01-23 16:13:47.000000000 -0600
+***************
+*** 277,279 ****
+--- 277,284 ----
+      template::head::add_css -href "/resources/dotlrn/dotlrn-toolbar.css"
+      template::add_header -src "/packages/dotlrn/lib/toolbar"
+  }
++ 
++ ## Learn Content: set an alert message after an activity has been created
++     set content_alert_message [ad_get_cookie content_alert_message ""]
++     ad_set_cookie content_alert_message ""
++ ###

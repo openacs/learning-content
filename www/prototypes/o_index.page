@@ -1,0 +1,26 @@
+::xowiki::Object new -title "Object index" -text {
+proc content {} {
+
+set user_id [ad_conn user_id]
+set admin_p [dotlrn::user_can_admin_community_p -user_id $user_id -community_id [dotlrn_community::get_community_id]]
+if {$admin_p} {
+        return {
+         <p>
+          #learning-content.welcome#
+         </p>
+         <p>
+         #learning-content.welcome_body#
+         </p>
+       }
+} else {
+     return {
+          <p>
+          #learning-content.e_welcome#
+          </p>
+         <p>
+         #learning-content.e_welcome_body#
+         </p>
+      }
+  }
+}
+}

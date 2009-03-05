@@ -1,0 +1,24 @@
+.margin-form fieldset #category {
+    margin-top: -15px;
+    clear: none;
+}
+
+.order-nav {
+    float: left;
+    clear: both;
+}
+
+#menu-blue ul {
+    float: left;	
+}
+
+#menu-blue li a {
+    padding: 11px 15px 10px 15px;
+}
+#submenu-blue ul {
+    margin-top: 6px;
+}
+
+#left_side .greybox {
+    width: 95%;
+}

@@ -1,0 +1,21 @@
+Run the script.sh to make content work with the new features, 
+this script will patch some packages and will also add a new 
+plugin for the xinha editor, if you use the chat package, run
+the script-extras.sh as well.
+
+Details of the patch
+
+forums, evaluation, assessment, chat:
+- Provide an extend and insert callback inside the add/edit page 
+of each package to link the resources to the learning-content package
+
+acs-subsite:
+- Modify the o.vuh to work with search callbacks
+
+theme-zen:
+- Alter the alert user message zone to allow messages to be shown 
+after an activity has been added to the content
+
+acs-templating:
+- Add the new glossary plugin folder to the xinha editor plugins
+

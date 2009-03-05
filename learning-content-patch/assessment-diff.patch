@@ -1,0 +1,57 @@
+diff -crBN assessment-head/tcl/as-callback-procs.tcl assessment/tcl/as-callback-procs.tcl
+*** assessment-head/tcl/as-callback-procs.tcl	2009-01-14 12:45:59.000000000 -0600
+--- assessment/tcl/as-callback-procs.tcl	2009-01-14 12:46:02.000000000 -0600
+***************
+*** 78,80 ****
+--- 78,90 ----
+      -object_id
+  } {
+  }
++ 
++ ad_proc -public -callback search::url -impl as_assessments {} {
++ 	returns a url for an assessment to the search package
++ } {
++     set assessment_id [content::revision::item_id -revision_id $object_id]
++     set package_id [acs_object::package_id -object_id $assessment_id]
++     set package_url [apm_package_url_from_id $package_id]
++     
++     return "${package_url}instructions?assessment_id=$assessment_id"
++ }
+diff -crBN assessment-head/www/asm-admin/assessment-form.tcl assessment/www/asm-admin/assessment-form.tcl
+*** assessment-head/www/asm-admin/assessment-form.tcl	2009-01-14 12:38:46.000000000 -0600
+--- assessment/www/asm-admin/assessment-form.tcl	2009-01-14 12:44:07.000000000 -0600
+***************
+*** 9,14 ****
+--- 9,15 ----
+      {permission_p 0}
+      {type ""}
+      {after "0"}
++     {page_instance_id 0}
+  } -properties {
+      context:onevalue
+      page_title:onevalue
+***************
+*** 254,259 ****
+--- 255,264 ----
+      }
+  }
+  
++ ## Learning Content: Extend the form to send the page_instance_id for content activities
++     callback -catch -impl content learning_content::extend_form -name "assessment_form" -page_instance_id $page_instance_id
++ ###
++ 
+  ad_form -extend -name assessment_form -new_request {
+      set new ""
+      set title ""
+***************
+*** 333,338 ****
+--- 338,346 ----
+  
+          set assessment_id [db_string assessment_id_from_revision {}]
+  
++ ## Learning Content: Insert the activity_id when the assessment is created
++         callback -catch -impl content learning_content::insert_object -name $title -item_id $page_instance_id -activity_id $assessment_id
++ ###
+          # grant permission for this assessment to the user
+  
+          permission::grant -party_id $user_id -object_id $assessment_id -privilege "admin"

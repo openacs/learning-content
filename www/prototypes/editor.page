@@ -1,0 +1,27 @@
+::xowiki::Object new -title "RichText Editor Config" -text {
+
+                 set xinha {richtext(richtext),nospell
+                             {options {editor xinha plugins {
+                             GetHtml ContextMenu FullScreen 
+                             ListType EditTag Stylist OacsFs InsertGlossaryEntry
+                             } height 350px javascript {
+xinha_config.toolbar =
+ [
+   ["popupeditor"],
+   ["separator","formatblock","fontname","fontsize","bold","italic","underline","strikethrough"],
+   ["separator","forecolor","hilitecolor","textindicator"],
+   ["linebreak","separator","justifyleft","justifycenter","justifyright","justifyfull"],
+   ["separator","insertorderedlist","insertunorderedlist","outdent","indent"],
+   ["separator","inserthorizontalrule","createlink","insertimage","inserttable"],
+   ["linebreak","separator","undo","redo"],
+   ["separator","killword","clearfonts","removeformat"],
+   ["htmlmode"]
+ ];
+xinha_config.pageStyleSheets = ["/resources/learning-content/simple-style-blue.css"];
+xinha_config.stylistLoadStylesheet('/resources/learning-content/simple-style-blue.css',{'.greybox':'Grey Box','.date':'Date'});
+                             }}}
+                             {html {rows 15 cols 50 style {width: 100%}}}
+                             {htmlarea_p 1}}
+                  set tit {text {label \#xowiki.title\#} {html {size 40 maxlength 50}} {values ""}}
+                  set widget_specs [list *,contenido $xinha *,title $tit]
+}

@@ -1,0 +1,93 @@
+diff -crBN evaluation-head/tcl/evaluation-callback-procs.tcl evaluation/tcl/evaluation-callback-procs.tcl
+*** evaluation-head/tcl/evaluation-callback-procs.tcl	2009-01-08 07:28:54.000000000 -0600
+--- evaluation/tcl/evaluation-callback-procs.tcl	2009-01-08 09:09:20.000000000 -0600
+***************
+*** 71,74 ****
+  	      
+  	    
+  	}
+!     }         
+\ No newline at end of file
+--- 71,85 ----
+  	      
+  	    
+  	}
+!     }         
+! 
+! ad_proc -public -callback search::url -impl evaluation_tasks {} {
+! 	returns a url for an evaluation to the search package
+! } {
+!     set evaluation_id $object_id
+!     set package_id [acs_object::package_id -object_id $evaluation_id]
+!     set grade_id [lindex [db_list get_grade_id { *SQL* }] 0]
+!     set package_url [apm_package_url_from_id $package_id]
+! 
+!     return "${package_url}task-view?task_id=$evaluation_id&grade_id=$grade_id&return_url=${package_url}admin/?grade_id=$grade_id"
+! }
+diff -crBN evaluation-head/tcl/evaluation-callback-procs.xql evaluation/tcl/evaluation-callback-procs.xql
+*** evaluation-head/tcl/evaluation-callback-procs.xql	2009-01-08 07:28:54.000000000 -0600
+--- evaluation/tcl/evaluation-callback-procs.xql	2009-01-08 09:11:15.000000000 -0600
+***************
+*** 34,37 ****
+--- 34,49 ----
+      </querytext>
+    </fullquery>
+    
++   <fullquery name="callback::search::url::impl::evaluation_tasks.get_grade_id">
++     <querytext>
++       select grade_id
++       from evaluation_grades
++       where grade_item_id = (
++         select grade_item_id
++         from evaluation_tasks
++         where task_id = :evaluation_id
++       )
++     </querytext>
++   </fullquery>
++ 
+  </queryset>
+diff -crBN evaluation-head/www/admin/tasks/task-add-edit.tcl evaluation/www/admin/tasks/task-add-edit.tcl
+*** evaluation-head/www/admin/tasks/task-add-edit.tcl	2009-01-08 07:28:54.000000000 -0600
+--- evaluation/www/admin/tasks/task-add-edit.tcl	2009-01-08 09:06:33.000000000 -0600
+***************
+*** 20,26 ****
+      {enable 1}
+      {return_p ""}
+      {simple_p ""}
+! 
+  }
+  
+  set package_id [ad_conn package_id]
+--- 20,26 ----
+      {enable 1}
+      {return_p ""}
+      {simple_p ""}
+!     {page_instance_id 0}
+  }
+  
+  set package_id [ad_conn package_id]
+***************
+*** 314,319 ****
+--- 314,323 ----
+      }
+  } 
+  
++ ## Learning Content: Extend the form to send the page_instance_id for content activities
++     callback -catch -impl content learning_content::extend_form -name "task" -page_instance_id $page_instance_id
++ ###
++ 
+  ad_form -extend -name task -form {
+      
+  } -edit_request {
+***************
+*** 461,466 ****
+--- 465,473 ----
+  	set content_length 0
+  	db_dml lob_size { *SQL* }
+  
++ ## Learning Content: Insert the activity_id when the evaluation is created
++         callback -catch -impl content learning_content::insert_object -name $task_name -item_id $page_instance_id -activity_id $task_id
++ ###
+  
+  	if { ![empty_string_p $upload_file] }  {
+  	    set tmp_file [template::util::file::get_property tmp_filename $upload_file]

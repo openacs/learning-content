@@ -1,0 +1,55 @@
+diff -crBN forums-head/lib/message/post.tcl forums/lib/message/post.tcl
+*** forums-head/lib/message/post.tcl	2009-01-14 12:51:25.000000000 -0600
+--- forums/lib/message/post.tcl	2009-01-14 12:51:32.000000000 -0600
+***************
+*** 173,178 ****
+--- 173,181 ----
+                  -format $format \
+                  -user_id $displayed_user_id
+              
++ ## Learning Content: Insert the activity_id when the message is created
++         callback -catch -impl content learning_content::insert_object -name $subject -item_id $page_instance_id -activity_id $message_id
++ ###
+              # DRB: Black magic cache flush call which will disappear when list builder is
+              # rewritten to paginate internally rather than use the template paginator.
+              cache flush "messages,forum_id=$forum_id*"
+***************
+*** 210,215 ****
+--- 213,221 ----
+          }
+      }
+  
++  ## Learning Content: Extend the form to send the page_instance_id for content activities
++      callback -catch -impl content learning_content::extend_form -name "message" -page_instance_id $page_instance_id
++  ###
+  
+  if {[exists_and_not_null alt_template]} {
+      ad_return_template $alt_template
+diff -crBN forums-head/www/message-post.adp forums/www/message-post.adp
+*** forums-head/www/message-post.adp	2009-01-14 12:51:25.000000000 -0600
+--- forums/www/message-post.adp	2009-01-14 12:51:27.000000000 -0600
+***************
+*** 6,9 ****
+  <include src="/packages/forums/lib/message/post" forum_id="@forum_id@" 
+                               &parent_message="parent_message"
+                               anonymous_allowed_p="@anonymous_allowed_p@"
+!                              attachments_enabled_p="@attachments_enabled_p@">
+--- 6,10 ----
+  <include src="/packages/forums/lib/message/post" forum_id="@forum_id@" 
+                               &parent_message="parent_message"
+                               anonymous_allowed_p="@anonymous_allowed_p@"
+!                              attachments_enabled_p="@attachments_enabled_p@"
+!                              page_instance_id="@page_instance_id@">
+diff -crBN forums-head/www/message-post.tcl forums/www/message-post.tcl
+*** forums-head/www/message-post.tcl	2009-01-14 12:51:25.000000000 -0600
+--- forums/www/message-post.tcl	2009-01-14 12:51:29.000000000 -0600
+***************
+*** 9,14 ****
+--- 9,15 ----
+  } -query {
+      {forum_id ""}
+      {parent_id ""}
++     {page_instance_id 0}
+  } -validate {
+      forum_id_or_parent_id {
+          if {[empty_string_p $forum_id] && [empty_string_p $parent_id]} {

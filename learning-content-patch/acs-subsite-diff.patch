@@ -1,0 +1,20 @@
+diff -crBN acs-subsite-head/www/o.vuh acs-subsite/www/o.vuh
+*** acs-subsite-head/www/o.vuh	2009-01-08 09:16:34.000000000 -0600
+--- acs-subsite/www/o.vuh	2009-01-08 10:23:39.000000000 -0600
+***************
+*** 62,68 ****
+  
+  # Try to retrieve the page url using a callback that makes use of upvar
+  
+! set page_url [lindex [callback -catch -impl $object_type subsite::url -object_id $object_id -package_id $package_id -type "display"] 0]
+  
+  # If this did not work, try again with the Service contract
+  if {[empty_string_p $page_url]} {
+--- 62,68 ----
+  
+  # Try to retrieve the page url using a callback that makes use of upvar
+  
+! set page_url [lindex [callback -catch -impl $object_type search::url -object_id $object_id] 0]
+  
+  # If this did not work, try again with the Service contract
+  if {[empty_string_p $page_url]} {

@@ -1,0 +1,15 @@
+.options {
+	font-family: Arial, sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	background-color: #FFFFFF;
+ 	float: right; 
+	width: 15%;
+	text-align: center;
+}
+.greybox {
+	border : 1px solid #ccc;
+	background : #f5f5f5;
+	width : 100%;
+	padding : 10px;
+}

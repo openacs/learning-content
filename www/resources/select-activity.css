@@ -1,0 +1,75 @@
+/* select-activity */
+.activities th {
+    text-align: left;
+    padding-left: 5px;
+    height: 30px;
+}
+.activities td {
+    height: 30px;
+    text-align: left;
+}
+.icon-spot {
+    width: 15%;
+    text-align: center;
+}
+.activities-icon {
+    width: 35px;
+}
+
+#activities-select-table {
+    margin-top: 10px; 
+    width: 90%; 
+    min-width: 750px;
+}
+#activities-div {
+    width: 100%; 
+    border-collapse: collapse;
+}
+#activities-div a {
+    cursor: pointer;
+}
+#show_activities a {
+    cursor: pointer;
+}
+.arrow-td {
+    width: 60px; 
+    padding-top: 60px;
+}
+#activities-left {
+    width: 30%;
+}
+#activities-center {
+    width: 45%;
+}
+#activities-right {
+    width: 25%;
+}
+.margin-form .form-item-wrapper .form-label {
+    display:inline;
+    float:none;
+    width:0;
+}
+.margin-form .form-item-wrapper .form-widget, .margin-form .form-button, .margin-form div.form-help-text {
+    display:block;
+    margin-left:0;
+}
+.portlet-wrapper{ 
+    border: 1px solid;
+}
+.portlet_head{ 
+    border-bottom: 1px solid;
+}
+.margin-form fieldset {
+    border: 0;
+    margin: 0;
+}
+
+.bportlet_head .bportlet_head_confirm {
+    height: 52px;
+}
+.bportlet_head_text {
+    text-align: center; 
+    font-weight: bold; 
+    margin-top: 20px;
+}
+/* !- select-activity */

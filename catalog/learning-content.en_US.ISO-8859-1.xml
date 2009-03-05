@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<message_catalog package_key="learning-content" locale="en_US" charset="ISO-8859-1">
+
+  <msg key="activity_not_available">Activity not available</msg>
+  <msg key="activity_type">Activity Type</msg>
+  <msg key="add_edit_sections_line">To &lt;a href=&quot;admin/category-view&quot;&gt;add/edit sections&lt;/a&gt;, go to the content admin link, then you will find an edit content index link.</msg>
+  <msg key="add_folder">Add Folder</msg>
+  <msg key="add_section">Add new section</msg>
+  <msg key="add_unit">Add new unit</msg>
+  <msg key="admin">Admin</msg>
+  <msg key="admin_content_options">Admin Content</msg>
+  <msg key="admin_pages_of">Admin pages of: </msg>
+  <msg key="admin_portlet_element_pretty_name">Content Portlet</msg>
+  <msg key="admin_portlet_pretty_name">Content Portlet Administration</msg>
+  <msg key="All">All</msg>
+  <msg key="appearances">Appearances</msg>
+  <msg key="assessment_not_available_yet">This Assessment is not available yet</msg>
+  <msg key="back">Back</msg>
+  <msg key="can_delete">You Can delete this section</msg>
+  <msg key="cancel">Cancel</msg>
+  <msg key="chat_room">Chat Room</msg>
+  <msg key="choose_activity">Choose Activity</msg>
+  <msg key="choose_location">Choose Location</msg>
+  <msg key="confirm">Confirm</msg>
+  <msg key="content">Content</msg>
+  <msg key="content_admin">Content Admin</msg>
+  <msg key="content_new_object_alert_message">The &lt;a href=%content_url%&gt;Activity&lt;/a&gt; has been added to the Content </msg>
+  <msg key="copy">Copy</msg>
+  <msg key="copy_content_line">Copy the content</msg>
+  <msg key="copy_content_to">Copy Content to:</msg>
+  <msg key="copy_error_message">There was an error during the copy of the content, you can try again or contact the system administrator.</msg>
+  <msg key="copy_success_message">The content was copied successfully</msg>
+  <msg key="copy_warning_message">This action will overwrite the contents in the target course. \nThe activities are not copied.\nDo you want to continue?</msg>
+  <msg key="create_activity_line">Add a new activity</msg>
+  <msg key="create_new_activity_line">To &lt;a href=&quot;activity-new&quot;&gt;create a new activity&lt;/a&gt;, go to the new activity link in the above links, the available activities are: evaluations, assessments, forums or chat rooms.</msg>
+  <msg key="create_new_page_line">To &lt;a href=&quot;page-instance-new&quot;&gt;create a new page&lt;/a&gt;, go to the new page link in the above links.</msg>
+  <msg key="create_page_line">Add a new page</msg>
+  <msg key="decreasing">Decreasing</msg>
+  <msg key="definition">Definition</msg>
+  <msg key="definitionToolTip">Definition of the word for the glossary</msg>
+  <msg key="delete">Delete</msg>
+  <msg key="delete_folder">Delete Folder</msg>
+  <msg key="delete_section">Delete section</msg>
+  <msg key="e_welcome">Welcome to the content section of your course.</msg>
+  <msg key="e_welcome_body">There is no content created for this course yet.</msg>
+  <msg key="edit">Edit</msg>
+  <msg key="edit_activity">Edit Activity</msg>
+  <msg key="edit_content_index">Edit Content Index</msg>
+  <msg key="edit_content_index_line">Edit contents index</msg>
+  <msg key="edit_header">Edit Header Page</msg>
+  <msg key="edit_index">Edit content index</msg>
+  <msg key="edit_name">Edit Name</msg>
+  <msg key="edit_title">Edit Header</msg>
+  <msg key="edit_word">Term Edition</msg>
+  <msg key="forum_not_available">This forum is not available</msg>
+  <msg key="forums_admin_link">Messages are added to a forum but there are no forums.&lt;br /&gt;
+&lt;a href=&quot;%forums_url%&quot;&gt;Add Forum&lt;/a&gt;</msg>
+  <msg key="glossary">Glossary</msg>
+  <msg key="glossary_line">In each page or activity you can add a definition to a word to be shown in the content glossary by using the glossary option &lt;img src=&quot;/resources/acs-templating/xinha-nightly/plugins/InsertGlossaryEntry/img/insert-glossary-entry.gif&quot;&gt; in the editor.</msg>
+  <msg key="glossary_view">Glossary View</msg>
+  <msg key="go_back">Go back</msg>
+  <msg key="go_to">Go to pages of: </msg>
+  <msg key="go_to_activity">Go To Activity</msg>
+  <msg key="go_to_assessment">Go to assessment &quot;%object_name%&quot;</msg>
+  <msg key="go_to_chat_room">Go to chat room &quot;%object_name%&quot;</msg>
+  <msg key="go_to_evaluation">Go to evaluation &quot;%object_name%&quot;</msg>
+  <msg key="go_to_forum">Go to forum &quot;%object_name%&quot;</msg>
+  <msg key="go_to_message">Go to message &quot;%object_name%&quot;</msg>
+  <msg key="header">Header</msg>
+  <msg key="header_page">Header Page</msg>
+  <msg key="home">Home</msg>
+  <msg key="increasing">Increasing</msg>
+  <msg key="index_page">Content Index page</msg>
+  <msg key="last_viewed">Last Viewed</msg>
+  <msg key="location">Location</msg>
+  <msg key="mapped_objects">This section have mapped object</msg>
+  <msg key="my_classes">My Classes</msg>
+  <msg key="my_communities">My Communities</msg>
+  <msg key="Name">Name</msg>
+  <msg key="New">New</msg>
+  <msg key="new_activity">New Activity</msg>
+  <msg key="new_content_admin_portlet">New %element_pretty_name%</msg>
+  <msg key="new_entry">New Entry</msg>
+  <msg key="new_message">New message in forum</msg>
+  <msg key="new_page">New Page</msg>
+  <msg key="new_seccion">New Seccion</msg>
+  <msg key="new_unit">Add New Unit</msg>
+  <msg key="new_word">New Term</msg>
+  <msg key="next">Next</msg>
+  <msg key="no">No</msg>
+  <msg key="no_activity">There is no activity</msg>
+  <msg key="no_classes">You have no classes to admin</msg>
+  <msg key="no_communities">You have no communities to admin</msg>
+  <msg key="no_glossary_definition">No definition specified.</msg>
+  <msg key="no_glossary_word">No word specified.</msg>
+  <msg key="no_pages">There are no pages</msg>
+  <msg key="no_users">There are no users</msg>
+  <msg key="no_visits">No visits</msg>
+  <msg key="no_visits_user">This user has not visited any pages</msg>
+  <msg key="not_used">Not Used</msg>
+  <msg key="ok">OK</msg>
+  <msg key="optional_description">Optional Description</msg>
+  <msg key="order">Order</msg>
+  <msg key="other_words">Other Entries</msg>
+  <msg key="page_decreasing">Move Up</msg>
+  <msg key="page_increasing">Move Down</msg>
+  <msg key="page_views">Page Views</msg>
+  <msg key="pages_visits">Visits by page</msg>
+  <msg key="remove_link">Remove link</msg>
+  <msg key="save">Save</msg>
+  <msg key="select_an_activity">You must select an activity</msg>
+  <msg key="select_type_of_activity">Select Type of Activity</msg>
+  <msg key="show_header">Show Header: </msg>
+  <msg key="similar_words">Related Entries</msg>
+  <msg key="text_edit_line">Edit the text of a page</msg>
+  <msg key="there_are_no_activities_for_type">There are no activities of this type</msg>
+  <msg key="there_are_no_words">There are no terms</msg>
+  <msg key="total_of_pages_visited">Total of pages visited</msg>
+  <msg key="total_users">Total Users</msg>
+  <msg key="total_views">Total Views</msg>
+  <msg key="tutorials">Mini-Tutorials</msg>
+  <msg key="unit_description">Each Unit is divided in the following sections: &lt;br /&gt;&lt;ul&gt;
+&lt;li&gt; Introduction&lt;/li&gt;
+&lt;li&gt; Content&lt;/li&gt;
+&lt;li&gt; Activities&lt;/li&gt;
+&lt;li&gt; Glossary&lt;/li&gt;
+&lt;li&gt; Annexed&lt;/li&gt;
+&lt;/ul&gt;
+These sections can change once the Unit is created.  And it is possible to create new sub-sections.
+</msg>
+  <msg key="used">Used %times_used% times</msg>
+  <msg key="user_name">Username</msg>
+  <msg key="user_tracking">User tracking</msg>
+  <msg key="user_views">User Views</msg>
+  <msg key="users_visits">Visits by user</msg>
+  <msg key="view_content">View Content</msg>
+  <msg key="view_details">View Details</msg>
+  <msg key="visits_details_for_content">Visits details for Content</msg>
+  <msg key="visits_details_for_page">Visits details for page: %page_name%</msg>
+  <msg key="visits_details_for_user">Visits details for user: %user_name%</msg>
+  <msg key="visits_reports_line">Students visits report</msg>
+  <msg key="welcome">Welcome to aLF Web content editor</msg>
+  <msg key="welcome_body">In this section you can create a web content for you courses.</msg>
+  <msg key="word">Term</msg>
+  <msg key="word_already_exist">This term already exist!</msg>
+  <msg key="word_not_blank">Term cannot be blank</msg>
+  <msg key="wordToolTip">Word for the glossary</msg>
+  <msg key="yes">Yes</msg>
+  <msg key="you_dont_have_perm">You don't have enough permissions to perform this action on this object</msg>
+</message_catalog>

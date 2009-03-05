@@ -1,0 +1,15 @@
+/* select-activity IE6 */
+
+.bportlet_head {
+    height: 67px;
+}
+.bportlet_head_confirm {
+    height: 47px;
+}
+.bportlet_head_text {
+    text-align: center; 
+    font-weight: bold; 
+    margin-top: 10px;
+}
+
+/* !- select-activity IE6 */

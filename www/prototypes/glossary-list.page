@@ -1,0 +1,22 @@
+set folder_id [content::folder::get_folder_from_package \
+    -package_id [ad_conn package_id]]
+set content_template [content::item::get_id_by_name -name en:content_template \
+    -parent_id $folder_id]
+::xowiki::PageInstance create ::"GlossaryView" -noinit \
+        -set object_type ::xowiki::PageInstance \
+        -set page_template $content_template \
+        -set page_order [learning_content::get_next_page_order] \
+        -set lang en \
+        -set instance_attributes {contenido {{{{adp /packages/learning-content/www/glossary-view}}} text/html}} \
+        -set description {} \
+        -set render_adp 1 \
+        -set text {} \
+        -set package_id [ad_conn package_id] \
+        -set nls_language en_US \
+        -set name "glossary_view" \
+        -set mime_type text/plain \
+        -set title "\#learning-content.glossary\#" \
+        -set publish_status ready \
+        -set item_id [db_nextval acs_object_id_seq] \
+        -set contenido {{{adp /packages/learning-content/www/glossary-view}}} \
+        -set parent_id $folder_id

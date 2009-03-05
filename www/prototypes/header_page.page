@@ -1,0 +1,22 @@
+set folder_id [content::folder::get_folder_from_package \
+    -package_id [ad_conn package_id]]
+set content_template [content::item::get_id_by_name -name en:header_template \
+    -parent_id $folder_id]
+::xowiki::PageInstance create ::"HeaderPage" -noinit \
+        -set object_type ::xowiki::PageInstance \
+        -set page_template $content_template \
+        -set page_order [learning_content::get_next_page_order] \
+        -set lang en \
+        -set instance_attributes {} \
+        -set description {} \
+        -set render_adp 1 \
+        -set text {} \
+        -set package_id [ad_conn package_id] \
+        -set nls_language en_US \
+        -set name "header_page" \
+        -set mime_type text/plain \
+        -set title "\#learning-content.header_page\#" \
+        -set publish_status ready \
+        -set item_id [db_nextval acs_object_id_seq] \
+        -set contenido {} \
+        -set parent_id $folder_id

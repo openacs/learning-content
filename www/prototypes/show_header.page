@@ -1,0 +1,10 @@
+::xowiki::Object new -title "Show Header" -text {
+proc content {} {
+set param [parameter::get -package_id [ad_conn package_id] -parameter show_header -default 0]
+if { $param == 1 } {
+     return { {{header_page -decoration none}} }
+} else {
+     return {}
+}
+}
+}

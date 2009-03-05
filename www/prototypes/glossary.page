@@ -1,0 +1,11 @@
+::xowiki::Form new \
+-set name glossary \
+-title "Glosario" \
+-set anon_instances t \
+-set form {{<form>@word@ @description@</form>} text/html} \
+-set text {<table><tr><th>@word@: </th></tr><tr><td>@description@</td></tr></table>} \
+-set form_constraints {
+    @cr_fields:hidden {_name:optional}
+    word:text,inline=true,label=Text
+    description:text,inline=true,label=Description
+}
