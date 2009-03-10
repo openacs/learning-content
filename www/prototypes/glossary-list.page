@@ -7,7 +7,7 @@ set content_template [content::item::get_id_by_name -name en:content_template \
         -set page_template $content_template \
         -set page_order [learning_content::get_next_page_order] \
         -set lang en \
-        -set instance_attributes {contenido {{{{adp /packages/learning-content/www/glossary-view}}} text/html}} \
+        -set instance_attributes {contenido {{{{adp glossary-view}}} text/html}} \
         -set description {} \
         -set render_adp 1 \
         -set text {} \
@@ -18,5 +18,5 @@ set content_template [content::item::get_id_by_name -name en:content_template \
         -set title "\#learning-content.glossary\#" \
         -set publish_status ready \
         -set item_id [db_nextval acs_object_id_seq] \
-        -set contenido {{{adp /packages/learning-content/www/glossary-view}}} \
+        -set contenido {{{adp glossary-view}}} \
         -set parent_id $folder_id

@@ -1,21 +1,21 @@
 ::xowiki::PageTemplate new -title "Content Template" -text {
 {{show_header -decoration none}} 
-{{adp /packages/learning-content/www/content-admin/order {page_pos @page_order@ page_id @revision_id@ content_id @package_id@ type @object_type@ dir "decreasing" action 0 page_name @name@ status @publish_status@} }}
+{{adp content-admin/order {page_pos @page_order@ page_id @revision_id@ content_id @package_id@ type @object_type@ dir "decreasing" action 0 page_name @name@ status @publish_status@} }}
 <div class="mainsite-blue">
   <div class="content-blue">
-    <div id="menu-blue"> {{adp /packages/learning-content/www/template/unit-navbar {page_id @revision_id@ content_id @package_id@} }} {{adp /packages/learning-content/www/template/complete-navbar {page_pos @page_order@ page_id @revision_id@ content_id @package_id@ type @object_type@} }}
+    <div id="menu-blue"> {{adp template/unit-navbar {page_id @revision_id@ content_id @package_id@} }} {{adp template/complete-navbar {page_pos @page_order@ page_id @revision_id@ content_id @package_id@ type @object_type@} }}
     </div>
-    <div id="main-blue"> {{adp /packages/learning-content/www/template/complete-subnavbar {page_pos @page_order@ page_id @revision_id@ content_id @package_id@ type @object_type@} }}
+    <div id="main-blue"> {{adp template/complete-subnavbar {page_pos @page_order@ page_id @revision_id@ content_id @package_id@ type @object_type@} }}
       <div id="left_side">
         <div class="intro-blue"> 
-            <div class="pad">{{adp /packages/learning-content/www/template/complete-titlebar {page_pos @page_order@ page_id @revision_id@ content_id @package_id@ my_title "@title@"} }}
+            <div class="pad">{{adp template/complete-titlebar {page_pos @page_order@ page_id @revision_id@ content_id @package_id@ my_title "@title@"} }}
             </div>
             <div class="nav">
- {{adp /packages/learning-content/www/template/complete-navigation {page_pos @page_order@ page_id @revision_id@ content_id @package_id@} }}
+ {{adp template/complete-navigation {page_pos @page_order@ page_id @revision_id@ content_id @package_id@} }}
             </div>
         </div>
         <div class="mpart"> @contenido@
-          <br />{{adp /packages/learning-content/www/show-activity {object_id @revision_id@ } }}
+          <br />{{adp show-activity {object_id @revision_id@ } }}
         </div>
       </div>
     </div>
