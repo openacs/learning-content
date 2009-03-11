@@ -51,8 +51,7 @@ namespace eval ::learning_content {
         if {[exists_and_not_null item_id]} {
             set category_id [category::get_mapped_categories $item_id]
             set tree_id [category::get_tree $category_id]
-            set category_id [learning_content::category::category_parent \
-                        -category_id $category_id -level 1 -tree_id $tree_id]
+            set category_id [learning_content::get_unit_id -category_id $category_id]
             set activity_id [learning_content::activity_exists_p -item_id $item_id]
             if { !$activity_id } {
         # AR: catch the case when a page has been deleted and will be imported
