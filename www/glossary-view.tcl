@@ -52,7 +52,7 @@ if { $admin_p } {
 
 lappend elements word {
     label "[_ learning-content.word] / [_ learning-content.definition]"
-    display_template "<b>@get_words.name@</b><br /> \
+    display_template "<div id=\"glossary_@get_words.name@\"><b>@get_words.name@</b></div><br /> \
         <div id=\"def__@get_words.item_id@__\">@get_words.definition@</div>"
 }
 
