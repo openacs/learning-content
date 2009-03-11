@@ -10,15 +10,15 @@ ad_page_contract {
     dir:optional
 }
 set page_list [list]
-set show 0
 set next_list [list]
+set show 1
 set wiki_url "[ad_conn package_url]"
-if {![string match $page_pos "@page_order@"]} {
-    set show 1
-    set wiki_folder_id [::xowiki::Page require_folder -name xowiki \
-                            -package_id $content_id]
-    set item_id [content::revision::item_id -revision_id $page_id]
-    set cat_id [category::get_mapped_categories $item_id]
+set wiki_folder_id [::xowiki::Page require_folder -name xowiki \
+                        -package_id $content_id]
+set item_id [content::revision::item_id -revision_id $page_id]
+set cat_id [category::get_mapped_categories $item_id]
+if {[llength $cat_id] > 0} {
+    set cat_id [lindex $cat_id 0]
     set tree_id [category::get_tree $cat_id]
     set my_parent_id [learning_content::category::category_parent \
                         -category_id $cat_id\
@@ -66,73 +66,74 @@ if {![string match $page_pos "@page_order@"]} {
 ## If there's not an adjacent page make the navigation continue
         set next_item 0
         switch $dir {
-            "decreasing" {
-                set order "desc"
-                if { $next_item == 0 } {
-                    while { $cat_id != 0 } {
-                        set parent_id [category::get_parent -category_id $cat_id]
-                        set subcategories [learning_content::category::get_under_categories \
-                                            -category_id $cat_id -parent_id $parent_id]
-                        foreach subcategory $subcategories {
-                            set category_id $subcategory
-                            set next_item [db_string get_next_item {*SQL*} \
-                                -default 0]
-                            if { $next_item == 0 } {
-                                set in_subcategories \
-                                    [category::get_children \
-                                        -category_id $category_id]
-                                set in_subcategories [lsort \
-                                    -decreasing $in_subcategories]
-                                foreach in_subcategory $in_subcategories {
-                                    set category_id $in_subcategory
-                                    set next_item \
-                                        [db_string get_next_item {*SQL*} \
-                                            -default 0]
-                                    if {$next_item > 0} {
-                                        break
-                                    }
-                                }
-                            }
-                            if { $next_item != 0 } break
-                        }
-                        if { $next_item != 0 } break
-                        set cat_id $parent_id
-                    }
-                }
-            }
-            "increasing" {
-                set order "asc"
-                while {$cat_id != 0} {
+        "decreasing" {
+            set order "desc"
+            if { $next_item == 0 } {
+                while { $cat_id != 0 } {
                     set parent_id [category::get_parent -category_id $cat_id]
-                    set subcategories [learning_content::category::get_over_categories                              -category_id $cat_id -parent_id $parent_id]
+                    set subcategories [learning_content::category::get_under_categories \
+                                        -category_id $cat_id -parent_id $parent_id]
                     foreach subcategory $subcategories {
-                        set in_subcategories [category::get_children \
-                                                -category_id $subcategory]
-                        set in_subcategories [lsort -increasing $in_subcategories]
-                        foreach in_subcategory $in_subcategories {
-                            set category_id $in_subcategory
-                            set next_item [db_string get_next_item { *SQL* } \
-                                -default 0]
-                            if { $next_item != 0 } {
-                                break
-                            }
-                        }
-                        if { $next_item == 0 } {
-                            set category_id $subcategory
-                            set next_item [db_string get_next_item {*SQL*} \
-                                -default 0]
-                        }
-                        if { $next_item != 0 } break
-                    }
-                    if { $next_item == 0 } {
-                        set category_id $parent_id
+                        set category_id $subcategory
                         set next_item [db_string get_next_item {*SQL*} \
                             -default 0]
+                        if { $next_item == 0 } {
+                            set in_subcategories \
+                                [category::get_children \
+                                    -category_id $category_id]
+                            set in_subcategories [lsort \
+                                -decreasing $in_subcategories]
+                            foreach in_subcategory $in_subcategories {
+                                set category_id $in_subcategory
+                                set next_item \
+                                    [db_string get_next_item {*SQL*} \
+                                        -default 0]
+                                if {$next_item > 0} {
+                                    break
+                                }
+                            }
+                        }
+                        if { $next_item != 0 } break
                     }
                     if { $next_item != 0 } break
                     set cat_id $parent_id
                 }
             }
+        }
+        "increasing" {
+            set order "asc"
+            while { $cat_id != 0 } {
+                set parent_id [category::get_parent -category_id $cat_id]
+                set subcategories [learning_content::category::get_over_categories \
+                                    -category_id $cat_id -parent_id $parent_id]
+                foreach subcategory $subcategories {
+                    set in_subcategories [category::get_children \
+                                            -category_id $subcategory]
+                    set in_subcategories [lsort -increasing $in_subcategories]
+                    foreach in_subcategory $in_subcategories {
+                        set category_id $in_subcategory
+                        set next_item [db_string get_next_item { *SQL* } \
+                            -default 0]
+                        if { $next_item != 0 } {
+                            break
+                        }
+                    }
+                    if { $next_item == 0 } {
+                        set category_id $subcategory
+                        set next_item [db_string get_next_item {*SQL*} \
+                            -default 0]
+                    }
+                    if { $next_item != 0 } break
+                }
+                if { $next_item == 0 } {
+                    set category_id $parent_id
+                    set next_item [db_string get_next_item {*SQL*} \
+                        -default 0]
+                }
+                if { $next_item != 0 } break
+                set cat_id $parent_id
+            }
+        }
         }
         if { $next_item == 0 } {
             set show 0
@@ -153,5 +154,3 @@ if {![string match $page_pos "@page_order@"]} {
 } else {
     set show 0
 }
-
-
