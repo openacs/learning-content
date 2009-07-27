@@ -131,7 +131,7 @@
   <msg key="visits_details_for_page">Detalle de visitas a la página: %page_name%</msg>
   <msg key="visits_details_for_user">Detalle de visitas del usuario: %user_name%</msg>
   <msg key="visits_reports_line">Reporte de visitas de los usuarios</msg>
-  <msg key="welcome">Bienvenido al editor de contenido web de aLF</msg>
+  <msg key="welcome">Bienvenido al editor de contenido web</msg>
   <msg key="welcome_body">En esta sección usted podrá crear contenido web para su curso.</msg>
   <msg key="word">Término</msg>
   <msg key="word_already_exist">Ese término ya existe!</msg>

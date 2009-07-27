@@ -139,7 +139,7 @@ These sections can change once the Unit is created.  And it is possible to creat
   <msg key="visits_details_for_page">Visits details for page: %page_name%</msg>
   <msg key="visits_details_for_user">Visits details for user: %user_name%</msg>
   <msg key="visits_reports_line">Students visits report</msg>
-  <msg key="welcome">Welcome to aLF Web content editor</msg>
+  <msg key="welcome">Welcome to the Web content editor</msg>
   <msg key="welcome_body">In this section you can create a web content for you courses.</msg>
   <msg key="word">Term</msg>
   <msg key="word_already_exist">This term already exist!</msg>
