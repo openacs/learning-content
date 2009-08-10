@@ -51,7 +51,7 @@ ad_proc -public -callback search::url -impl category {} {
     return ""
 }
 
-ad_proc -public -callback dotlrn::blocks::edit_url -impl category {} {
+ad_proc -public -callback planner::edit_url -impl category {} {
 
     @author alvaro@viaro.net
     @creation_date 2008-10-01

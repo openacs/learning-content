@@ -10,7 +10,7 @@
     </fullquery>
 
     <fullquery
-       name="callback::dotlrn::blocks::edit_url::impl::category.get_objects">
+       name="callback::planner::edit_url::impl::category.get_objects">
 
         <querytext>
             select object_id
