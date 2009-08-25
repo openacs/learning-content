@@ -1,4 +1,4 @@
-::xowiki::Page new -title "[_ learning-content.index_page]" -text {
+::xowiki::Page new -title "#learning-content.index_page#" -text {
 {{es:o_index -decoration plain }}
 }
 
