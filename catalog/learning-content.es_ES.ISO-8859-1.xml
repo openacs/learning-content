@@ -70,10 +70,10 @@
   <msg key="header_page">Página del encabezado</msg>
   <msg key="home">Inicio</msg>
   <msg key="increasing">Incrementar</msg>
-  <msg key="index_page">Indice de contenido</msg>
+  <msg key="index_page">Indice</msg>
   <msg key="last_viewed">Última visita</msg>
   <msg key="location">Ubicación</msg>
-  <msg key="mapped_objects">Esta sección NO puede ser borrada, ya que tiene elementos.</msg>
+  <msg key="mapped_objects">Esta sección NO puede ser borrada, ya que tiene páginas asociadas.</msg>
   <msg key="my_classes">Mis Clases</msg>
   <msg key="my_communities">Mis Comunidades</msg>
   <msg key="Name">Nombre</msg>

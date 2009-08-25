@@ -70,10 +70,10 @@
   <msg key="header_page">Header Page</msg>
   <msg key="home">Home</msg>
   <msg key="increasing">Increasing</msg>
-  <msg key="index_page">Content Index page</msg>
+  <msg key="index_page">Index</msg>
   <msg key="last_viewed">Last Viewed</msg>
   <msg key="location">Location</msg>
-  <msg key="mapped_objects">This section have mapped object</msg>
+  <msg key="mapped_objects">This section cannot be deleted because it has pages in it.</msg>
   <msg key="my_classes">My Classes</msg>
   <msg key="my_communities">My Communities</msg>
   <msg key="Name">Name</msg>
