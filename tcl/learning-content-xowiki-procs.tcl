@@ -141,6 +141,9 @@ namespace eval ::learning_content {
           {f.page_order
               {page_order:text(hidden),optional}
           }
+          {f.description
+	      {description:text(hidden),optional}
+	  }
           {with_categories false}
           {validate {
                {name {\[::xowiki::validate_name\]} {Another item with this name exists \
@@ -169,6 +172,9 @@ namespace eval ::learning_content {
               {title:text(text)
               {label #learning-content.Name#}}
           }
+	  {f.description
+	      {description:text(hidden),optional}
+	  }
           {with_categories true}
       }
 
