@@ -24,6 +24,7 @@ set tree_id    [lindex [lindex $tree_list 0] 0]
 set tree_name    [lindex [lindex $tree_list 0] 1]
 set categories [learning_content::get_categories  -tree_id $tree_id]
 set dynamic_tree_url "[ad_conn package_url]/dynamic-tree"
+set category_delete_alert_msg [_ learning-content.mapped_objects]
 
 template::multirow create category_tree category_id category_name parent_id level
 

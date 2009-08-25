@@ -31,7 +31,7 @@
 
 <multiple name="category_tree">
     var tmpNode = new YAHOO.widget.TextNode({
-        label: "@category_tree.category_name@ <a class=\"button\" onclick=\"addEditor(@category_tree.category_id@, @tree_id@, @category_tree.category_id@)\">"+ edit_msg +"</a><if @category_tree.level@ ne 3> <a class=\"button\" onclick=\"addNode(@tree_id@,@category_tree.category_id@)\">"+ add_msg +"</a></if> <a class=\"button\" onclick=\"removeMyNode(@category_tree.category_id@, @tree_id@,@category_tree.category_id@)\">"+ delete_msg +"</a> <span id=\"form_@category_tree.category_id@\"></span>", id:@category_tree.category_id@ }, tree.getNodeByProperty('id', @category_tree.parent_id@), true);
+        label: "@category_tree.category_name@ <a class=\"button\" onclick=\"addEditor(@category_tree.category_id@, @tree_id@, @category_tree.category_id@)\">"+ edit_msg +"</a><if @category_tree.level@ ne 3> <a class=\"button\" onclick=\"addNode(@tree_id@,@category_tree.category_id@)\">"+ add_msg +"</a></if> <a class=\"button\" onclick=\"removeMyNode(@category_tree.category_id@, @tree_id@,@category_tree.category_id@,'@category_delete_alert_msg@')\">"+ delete_msg +"</a> <span id=\"form_@category_tree.category_id@\"></span>", id:@category_tree.category_id@ }, tree.getNodeByProperty('id', @category_tree.parent_id@), true);
 </multiple>
 </script>
 
