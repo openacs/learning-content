@@ -11,7 +11,7 @@
   <msg key="admin_content_options">Administrar el Contenido</msg>
   <msg key="admin_pages_of">Administrar Páginas de: </msg>
   <msg key="admin_portlet_element_pretty_name">Portlet Contenido</msg>
-  <msg key="admin_portlet_pretty_name">Administración de contenido</msg>
+  <msg key="admin_portlet_pretty_name">Administración del Contenido de Aprendizaje</msg>
   <msg key="All">Todas</msg>
   <msg key="appearances">Apariciones</msg>
   <msg key="assessment_not_available_yet">Este Cuestionario aún no está disponible</msg>
@@ -22,8 +22,8 @@
   <msg key="choose_activity">Elija la Actividad</msg>
   <msg key="choose_location">Escoger Ubicación</msg>
   <msg key="confirm">Confirmar</msg>
-  <msg key="content">Contenido</msg>
-  <msg key="content_admin">Administrar Contenido</msg>
+  <msg key="content">Contenido de Aprendizaje</msg>
+  <msg key="content_admin">Administrar Contenido de Aprendizaje</msg>
   <msg key="content_new_object_alert_message"> La &lt;a href=%content_url%&gt;Actividad&lt;/a&gt; se ha añadido al Contenido</msg>
   <msg key="copy">Copiar</msg>
   <msg key="copy_content_line">Copiar el contenido</msg>
@@ -119,7 +119,7 @@
   <msg key="total_users">Total de Usuarios</msg>
   <msg key="total_views">Total de Visitas</msg>
   <msg key="tutorials">Mini-Tutoriales</msg>
-  <msg key="unit_description">Cada Unidad o Capítulo se divide en las siguiente secciones:&amp;lt;br /&amp;gt;&amp;lt;ul&amp;gt; &amp;lt;li&amp;gt; Introducción&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; Contenido&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; Actividades&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; Glosario&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; Anexo&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; Dichas secciones pueden cambiarse una vez creada la Unidad / Capitulo. Y se puede crear adicionalmente nuevas sub-secciones.</msg>
+  <msg key="unit_description">Cada Unidad o Capítulo se divide en las siguiente secciones:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Introducción&lt;/li&gt;&lt;li&gt;Contenido&lt;/li&gt;&lt;li&gt; Actividades&lt;/li&gt;&lt;li&gt; Glosario&lt;/li&gt;&lt;li&gt;Anexo&lt;/li&gt;&lt;/ul&gt; Dichas secciones pueden cambiarse una vez creada la Unidad / Capitulo. Y se puede crear adicionalmente nuevas sub-secciones.</msg>
   <msg key="used">Utilizada %times_used% veces</msg>
   <msg key="user_name">Nombre del Usuario</msg>
   <msg key="user_tracking">Estadísticas de los Usuarios</msg>
@@ -131,7 +131,7 @@
   <msg key="visits_details_for_page">Detalle de visitas a la página: %page_name%</msg>
   <msg key="visits_details_for_user">Detalle de visitas del usuario: %user_name%</msg>
   <msg key="visits_reports_line">Reporte de visitas de los usuarios</msg>
-  <msg key="welcome">Bienvenido al editor de contenido web</msg>
+  <msg key="welcome">Bienvenido al editor de contenido web de .LRN</msg>
   <msg key="welcome_body">En esta sección usted podrá crear contenido web para su curso.</msg>
   <msg key="word">Término</msg>
   <msg key="word_already_exist">Ese término ya existe!</msg>

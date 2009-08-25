@@ -11,7 +11,7 @@
   <msg key="admin_content_options">Admin Content</msg>
   <msg key="admin_pages_of">Admin pages of: </msg>
   <msg key="admin_portlet_element_pretty_name">Content Portlet</msg>
-  <msg key="admin_portlet_pretty_name">Content Portlet Administration</msg>
+  <msg key="admin_portlet_pretty_name">Learning Content Administration</msg>
   <msg key="All">All</msg>
   <msg key="appearances">Appearances</msg>
   <msg key="assessment_not_available_yet">This Assessment is not available yet</msg>
@@ -22,8 +22,8 @@
   <msg key="choose_activity">Choose Activity</msg>
   <msg key="choose_location">Choose Location</msg>
   <msg key="confirm">Confirm</msg>
-  <msg key="content">Content</msg>
-  <msg key="content_admin">Content Admin</msg>
+  <msg key="content">Learning Content</msg>
+  <msg key="content_admin">Learning Content Admin</msg>
   <msg key="content_new_object_alert_message">The &lt;a href=%content_url%&gt;Activity&lt;/a&gt; has been added to the Content </msg>
   <msg key="copy">Copy</msg>
   <msg key="copy_content_line">Copy the content</msg>
@@ -139,7 +139,7 @@ These sections can change once the Unit is created.  And it is possible to creat
   <msg key="visits_details_for_page">Visits details for page: %page_name%</msg>
   <msg key="visits_details_for_user">Visits details for user: %user_name%</msg>
   <msg key="visits_reports_line">Students visits report</msg>
-  <msg key="welcome">Welcome to the Web content editor</msg>
+  <msg key="welcome">Welcome to the .LRN Web content editor</msg>
   <msg key="welcome_body">In this section you can create a web content for you courses.</msg>
   <msg key="word">Term</msg>
   <msg key="word_already_exist">This term already exist!</msg>
