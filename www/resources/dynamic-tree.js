@@ -24,9 +24,9 @@ function addNode(tree_id, parent_id) {
     new Ajax.Request('category-add-edit?tree_id='+tree_id+'&parent_id='+parent_id+'&mode=2&name=Nueva_Seccion',{method: 'get', onSuccess: function(response){ window.location.reload();}});
 }
 
-function removeMyNode(node_id, tree_id, category_id) {
+function removeMyNode(node_id, tree_id, category_id, category_delete_alert_msg) {
     var tag = document.getElementById('form_'+node_id);
-    new Ajax.Request('category-delete?tree_id=' + tree_id + '&category_id=' + category_id,{method: 'get', onLoading: function(){ tag.appendChild(load_img); }, onComplete: function () { tag.innerHTML = ''; }, onSuccess: function(){ tree.removeNode(tree.getNodeByProperty('id',node_id),true)  }});
+    new Ajax.Request('category-delete?tree_id=' + tree_id + '&category_id=' + category_id,{method: 'get', onLoading: function(){ tag.appendChild(load_img); }, onComplete: function () { }, onSuccess: function(r){ tag.innerHTML = ''; if (r.responseText == 1) { tree.removeNode(tree.getNodeByProperty('id',node_id),true); } else { alert(category_delete_alert_msg); } }});
 
 }
 function addEditor(id, tree_id, category_id) {
