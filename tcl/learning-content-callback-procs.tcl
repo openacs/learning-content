@@ -99,7 +99,7 @@ ad_proc -public -callback learning_content::insert_object -impl content {} {
 
         set content_url [apm_package_url_from_id [$page set package_id]]
         append content_url [$page set name]
-        ad_set_cookie content_alert_message "[_ learning-content.content_new_object_alert_message]"
+	util_user_message -html -message "[_ learning-content.content_new_object_alert_message]"
         ns_cache flush xotcl_object_cache ::$item_id
     }
 }
