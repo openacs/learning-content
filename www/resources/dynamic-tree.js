@@ -35,17 +35,35 @@ function addEditor(id, tree_id, category_id) {
     tmp_input.id = tag_id;
     var tag = document.getElementById('form_'+id);
     tag.innerHTML = '';
-    tag.appendChild(tmp_input);
-    tmp_input.focus();
     var save = document.createElement('input');
     save.setAttribute('type','submit');
     save.setAttribute('style','font-size: 10px;');
-    save.onclick = function () {
-    var url = 'category-add-edit?tree_id='+tree_id+'&category_id='+category_id+'&name='+encodeURIComponent(tmp_input.value);
-    new Ajax.Request(url,{method: 'get', onLoading: function () { tag.appendChild(load_img); }, onComplete: function () { tag.removeChild(load_img); tag.innerHTML = ''; }, onSuccess: function(response){
-		tree.getNodeByProperty('id',id).getLabelEl().innerHTML = tmp_input.value+' '; document.getElementById('form_'+id).innerHTML = ''}
-	} ); }
+    var cf = function () {
+	var category_name = tmp_input.value.trim();
+        if ( category_name == '' ) { return false; }
+	var url = 'category-add-edit?tree_id='+tree_id+'&category_id='+category_id+'&name='+encodeURIComponent(category_name);
+	new Ajax.Request(url,{method: 'get', onLoading: function () { tag.appendChild(load_img); }, 
+		    onComplete: function () { tag.removeChild(load_img); tag.innerHTML = ''; }, 
+		    onSuccess: function(response){
+		        tree.getNodeByProperty('id',id).getLabelEl().innerHTML = tmp_input.value+' '; 
+			document.getElementById('form_'+id).innerHTML = '';
+		    }
+	} ); };
+    save.onclick = cf;
     save.value = save_msg;
+    tmp_input.onkeydown = function (event) { if((event.which && event.which == 13)||(event.keyCode && event.keyCode == 13)) { 
+	var category_name = tmp_input.value.trim();
+        if ( category_name == '' ) { return false; }
+	var url = 'category-add-edit?tree_id='+tree_id+'&category_id='+category_id+'&name='+encodeURIComponent(category_name);
+	new Ajax.Request(url,{method: 'get', onLoading: function () { tag.appendChild(load_img); }, 
+		    onComplete: function () { tag.removeChild(load_img); tag.innerHTML = ''; }, 
+		    onSuccess: function(response){
+			tree.getNodeByProperty('id',id).getLabelEl().innerHTML = tmp_input.value+' '; 
+			document.getElementById('form_'+id).innerHTML = '';
+		    }
+	 } ); } };
+    tag.appendChild(tmp_input);
+    tmp_input.focus();
     tag.appendChild(document.createTextNode('  '));
     tag.appendChild(save);
     var cancel = document.createElement('input');
@@ -148,3 +166,6 @@ function loadDataForNode(node, onCompleteCallback) {
         }
         return utftext;
     }
+String.prototype.trim = function () {
+    return this.replace(/^\s*/, "").replace(/\s*$/, "");
+}
