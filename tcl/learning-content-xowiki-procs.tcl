@@ -21,14 +21,21 @@ namespace eval ::learning_content {
     }
 
     Package instproc destroy {} {
-        ::xowiki::WikiForm instmixin delete ::learning_content::ContentForm
-        ::xowiki::PageInstanceEditForm instmixin delete \
-            ::learning_content::ContentWikiForm
-        ::xowiki::PageTemplateForm instmixin delete \
+	#
+	# In general, it is possible, that multiple learning_content packages are
+	# concurrently active in one thread.  We want to remove the mixin only,
+	# when the last instance is deleted.
+	#
+	if {[llength [[self class] allinstances]] == 1} {
+	    ::xowiki::WikiForm instmixin delete ::learning_content::ContentForm
+	    ::xowiki::PageInstanceEditForm instmixin delete \
+		::learning_content::ContentWikiForm
+	    ::xowiki::PageTemplateForm instmixin delete \
 	    ::learning_content::ContentTemplateForm
-        ::xowiki::FormPage instmixin delete ::learning_content::ContentFormPage
-        ::xowiki::Page instmixin delete ::learning_content::ContentPage
-        next
+	    ::xowiki::FormPage instmixin delete ::learning_content::ContentFormPage
+	    ::xowiki::Page instmixin delete ::learning_content::ContentPage
+	}
+	next
     }
 
     Package instproc return_page {
