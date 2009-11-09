@@ -96,7 +96,7 @@ ad_form -extend -name activities \
           {options {
               editor xinha plugins
               {GetHtml
-                  ContextMenu FullScreen ListType EditTag
+                  ContextMenu ListType EditTag
                   Stylist OacsFs InsertGlossaryEntry}
               }}
           {value "$optional_text"}

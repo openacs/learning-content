@@ -2,7 +2,7 @@
 
                  set xinha {richtext(richtext),nospell
                              {options {editor xinha plugins {
-                             GetHtml ContextMenu FullScreen 
+                             GetHtml ContextMenu 
                              ListType EditTag Stylist OacsFs InsertGlossaryEntry
                              } height 350px javascript {
 xinha_config.toolbar =
