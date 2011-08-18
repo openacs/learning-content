@@ -41,6 +41,8 @@
   <msg key="delete">Borrar</msg>
   <msg key="delete_folder">Eliminar Folder</msg>
   <msg key="delete_section">Eliminar sección</msg>
+  <msg key="do_not_publish">No publicar</msg>
+  <msg key="do_publish">Publicar</msg>
   <msg key="e_welcome">Bienvenido a la sección de contenido de tu curso.</msg>
   <msg key="e_welcome_body">Aún no existe ningún contenido creado para este curso.</msg>
   <msg key="edit">Editar</msg>
@@ -106,6 +108,7 @@
   <msg key="page_increasing">Mover Hacia Abajo</msg>
   <msg key="page_views">Visitas por página</msg>
   <msg key="pages_visits">Visitas por página</msg>
+  <msg key="published">Publicado</msg>
   <msg key="remove_link">Quitar enlace</msg>
   <msg key="save">Guardar</msg>
   <msg key="select_an_activity">Tiene que seleccionar una actividad</msg>
@@ -120,6 +123,10 @@
   <msg key="total_views">Total de Visitas</msg>
   <msg key="tutorials">Mini-Tutoriales</msg>
   <msg key="unit_description">Cada Unidad o Capítulo se divide en las siguiente secciones:&amp;lt;br /&amp;gt;&amp;lt;ul&amp;gt; &amp;lt;li&amp;gt; Introducción&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; Contenido&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; Actividades&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; Glosario&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; Anexo&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; Dichas secciones pueden cambiarse una vez creada la Unidad / Capitulo. Y se puede crear adicionalmente nuevas sub-secciones.</msg>
+  <msg key="unit_name">Nombre de la Unidad </msg>
+  <msg key="unit_publish">Publicación de Unidades </msg>
+  <msg key="unit_publish_state">Estado de Unidad</msg>
+  <msg key="unpublished">No Publicado</msg>
   <msg key="used">Utilizada %times_used% veces</msg>
   <msg key="user_name">Nombre del Usuario</msg>
   <msg key="user_tracking">Estadísticas de los Usuarios</msg>
@@ -139,4 +146,5 @@
   <msg key="wordToolTip">Término para el glosario</msg>
   <msg key="yes">Si</msg>
   <msg key="you_dont_have_perm">No tiene suficientes permisos para realizar esta acción sobre este objeto</msg>
+  <msg key="you_have_changed_unit_publish_state">Usted ha cambiado el estado de la Unidad a %action% </msg>
 </message_catalog>

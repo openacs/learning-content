@@ -41,6 +41,8 @@
   <msg key="delete">Delete</msg>
   <msg key="delete_folder">Delete Folder</msg>
   <msg key="delete_section">Delete section</msg>
+  <msg key="do_not_publish">Unpublish</msg>
+  <msg key="do_publish">Publish</msg>
   <msg key="e_welcome">Welcome to the content section of your course.</msg>
   <msg key="e_welcome_body">There is no content created for this course yet.</msg>
   <msg key="edit">Edit</msg>
@@ -106,6 +108,7 @@
   <msg key="page_increasing">Move Down</msg>
   <msg key="page_views">Page Views</msg>
   <msg key="pages_visits">Visits by page</msg>
+  <msg key="published">Published</msg>
   <msg key="remove_link">Remove link</msg>
   <msg key="save">Save</msg>
   <msg key="select_an_activity">You must select an activity</msg>
@@ -128,6 +131,10 @@
 &lt;/ul&gt;
 These sections can change once the Unit is created.  And it is possible to create new sub-sections.
 </msg>
+  <msg key="unit_name">Unit Name</msg>
+  <msg key="unit_publish">Unit Publication</msg>
+  <msg key="unit_publish_state">Unit pages state</msg>
+  <msg key="unpublished">Unpublished</msg>
   <msg key="used">Used %times_used% times</msg>
   <msg key="user_name">Username</msg>
   <msg key="user_tracking">User tracking</msg>
@@ -147,4 +154,5 @@ These sections can change once the Unit is created.  And it is possible to creat
   <msg key="wordToolTip">Word for the glossary</msg>
   <msg key="yes">Yes</msg>
   <msg key="you_dont_have_perm">You don't have enough permissions to perform this action on this object</msg>
+  <msg key="you_have_changed_unit_publish_state">You have chanded Unit publish state to %action%</msg>
 </message_catalog>
