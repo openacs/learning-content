@@ -175,7 +175,7 @@
             where c.object_id = ci.item_id
                 and ci.parent_id = :wiki_folder_id
                 and ci.content_type not in ('::xowiki::PageTemplate')
-                and ci.name not in ('es:header_page','es:index','es:indexe')
+                and ci.name not in ('en:header_page','en:index','en:indexe')
                 and r.revision_id = ci.live_revision
                 and p.page_id = r.revision_id
                 and c.category_id = :cat_id
@@ -235,6 +235,22 @@
             from categories 
             where category_id = :category_id
                 and tree_id = :tree_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="learning_content::category::get_ready_objects.get_ready_objects">
+        <querytext>
+            select com.object_id
+            from category_object_map com $join_clause
+            where com.category_id = :category_id $where_clause
+        </querytext>
+    </fullquery>
+
+    <fullquery name="learning_content::category::get_all_objects.get_all_objects">
+        <querytext>
+            select com.object_id
+            from category_object_map com $join_clause
+            where com.category_id = :category_id $where_clause
         </querytext>
     </fullquery>
 

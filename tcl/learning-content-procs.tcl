@@ -254,7 +254,7 @@ ad_proc -public learning_content::parse_for_fs {
     set list_of_expressions [split $page_content ">"]
     foreach expression $list_of_expressions {
         if {[regexp \
-            /dotlrn(.*)file-storage(.*)(\\.)(...|....)(\") \
+		 /dotlrn(\[^"\]*)file-storage(\[^"\]*)(\\.)(...|....)(\") \
             $expression one_match]} {
             set one_match [string trimright $one_match "\""]
             set this_match [list $one_match [learning_content::replace_path \
@@ -840,6 +840,106 @@ ad_proc -private learning_content::category::category_parent {
             return $category
         }
     }
+}
+
+ad_proc -public learning_content::category::set_category_publish_state {
+    -category_id
+    -tree_id
+    -wiki_folder_id
+    -state
+} {
+    
+    set tree_list [learning_content::category::get_tree_levels -subtree_id $category_id -tree_id $tree_id]
+    foreach one_category $tree_list {
+	set cat_id [lindex $one_category 0]
+	db_foreach select_page {
+	    select ci.item_id, r.revision_id, ci.name
+	    from category_object_map c, cr_items ci, cr_revisions r, xowiki_page p
+	    where c.object_id = ci.item_id and ci.parent_id = :wiki_folder_id
+	    and ci.content_type not in ('::xowiki::PageTemplate')
+	    and ci.name not in ('en:header_page','en:index','en:indexe')
+	    and r.revision_id = ci.live_revision
+	    and p.page_id = r.revision_id
+	    and category_id = :cat_id
+	    order by p.page_order} {
+		ns_cache flush xotcl_object_cache ::$item_id
+		ns_cache flush xotcl_object_cache ::$revision_id
+		
+		::xo::db::sql::content_item set_live_revision \
+		    -revision_id $revision_id \
+		    -publish_status $state
+		
+		if {$state ne "production"} {
+		    #  ::xowiki::notification::do_notifications
+		    #  -revision_id $revision_id
+		    #  ::xowiki::datasource $revision_id
+		} else {
+		    db_dml flush_syndication {delete from syndication where object_id = :revision_id}
+		}
+	    }
+    }
+}
+
+ad_proc -public learning_content::category::get_ready_objects { 
+    -category_id
+    {-object_type ""}
+    {-content_type ""}
+    {-include_children:boolean}
+} {
+    Returns a list of objects which are mapped to this category_id with publish_staus = ready
+    
+    @param category_id CategoryID of the category we want to get the objects for
+    @param object_type Limit the search for objects of this object type
+    @param content_type Limit the search for objects of this content_type
+    @param include_children Include child categories' objects as well. Not yet implemented
+    
+    @author malte ()
+    @creation-date Wed May 30 06:28:25 CEST 2007
+} {
+    set join_clause ""
+    set where_clause ""
+    if {$content_type ne ""} {
+        set join_clause ", cr_items i"
+        set where_clause "and i.item_id = com.object_id and i.content_type = :content_type and i.publish_status = 'ready' and i.name not in ('en:header_page','en:index','en:indexe')"
+    } elseif {$object_type ne ""} {
+        set join_clause ", acs_objects o"
+        set where_clause "and o.object_id = com.object_id and o.object_type = :object_type"        
+    }
+    return [db_list get_ready_objects {}]
+}
+
+ad_proc -public learning_content::category::get_all_objects { 
+    -category_id
+    {-object_type ""}
+    {-content_type ""}
+    {-show_all_p "f"}
+    {-include_children:boolean}
+} {
+    Returns a list of objects which are mapped to this category_id with publish_status = ready or production
+    
+    @param category_id CategoryID of the category we want to get the objects for
+    @param object_type Limit the search for objects of this object type
+    @param content_type Limit the search for objects of this content_type
+    @param show_all_p Show all objects, ready and production publish_status
+    @param include_children Include child categories' objects as well. Not yet implemented
+
+    @author malte ()
+    @creation-date Wed May 30 06:28:25 CEST 2007
+} {
+    set join_clause ""
+    set where_clause ""
+    if {$content_type ne ""} {
+        set join_clause ", cr_items i"
+	if {$show_all_p} {
+	    set where_clause "and i.item_id = com.object_id and i.content_type = :content_type and i.publish_status in ('production','ready') and i.name not in ('en:header_page','en:index','en:indexe')"
+	} else {
+	    set where_clause "and i.item_id = com.object_id and i.content_type = :content_type and i.publish_status = 'ready' and i.name not in ('en:header_page','en:index','en:indexe')"
+	}
+    } elseif {$object_type ne ""} {
+        set join_clause ", acs_objects o"
+        set where_clause "and o.object_id = com.object_id and o.object_type = :object_type"        
+    }
+    return [db_list get_all_objects {}]
 }
 
 ad_proc -public learning_content::value_compare {

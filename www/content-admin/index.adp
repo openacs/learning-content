@@ -31,6 +31,7 @@
     </p></li>
     <li><p><a href="@content_url@content-admin/edit-header">#learning-content.edit_title#</a></p></li>
     <li><p><a href='@content_url@content-admin/tracking'>#learning-content.user_views#</a></p></li>
+    <li><p><a href="@content_url@content-admin/set-category-publish-state">#learning-content.unit_publish#</a></p></li>
 </ul>
 </div>
 

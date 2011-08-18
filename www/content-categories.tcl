@@ -20,6 +20,16 @@ set tree_id    [lindex [lindex $tree_list 0] 0]
 set tree_name    [lindex [lindex $tree_list 0] 1]
 set folder_id [$package_id folder_id]
 set categories [learning_content::get_categories -tree_id $tree_id]
+set show_all_p f
+set admin_p [::xo::cc permission \
+		 -object_id $package_id -privilege admin \
+		 -party_id [::xo::cc user_id]]
+if {$admin_p} {
+    # get production_mode parameter
+    if {[parameter::get -package_id $package_id -parameter production_mode -default 0]} {
+	set show_all_p t
+    }
+}
 
 set page_id [string trimleft $__including_page "::"]
 
@@ -54,17 +64,17 @@ foreach category_id $categories {
         set is_open_unit false
     }
 
-    set total [expr $total + [llength [category::get_objects \
-        -category_id $category_id] ]]
+    set total [expr $total + [llength [learning_content::category::get_all_objects \
+        -category_id $category_id -content_type "::xowiki::PageInstance" -show_all_p $show_all_p] ]]
     set subcategories [db_list get_childrens {*SQL*}]
     foreach subcategory_id $subcategories {
-        set total [expr $total + [llength [category::get_objects \
-            -category_id $subcategory_id] ]]
+        set total [expr $total + [llength [learning_content::category::get_all_objects \
+            -category_id $subcategory_id -content_type "::xowiki::PageInstance" -show_all_p $show_all_p] ]]
         set in_subcategories [category::get_children \
             -category_id $subcategory_id]
         foreach in_subcategory_id $in_subcategories {
-            set total [expr $total + [llength [category::get_objects \
-                -category_id $in_subcategory_id] ]]
+            set total [expr $total + [llength [learning_content::category::get_all_objects \
+                -category_id $in_subcategory_id -content_type "::xowiki::PageInstance" -show_all_p $show_all_p] ]]
         }
     }
 
@@ -84,8 +94,8 @@ foreach category_id $categories {
             set child_list \
                 [expr [category::count_children \
                         -category_id $subcategory_id] \
-                    +  [llength [category::get_objects \
-                        -category_id $subcategory_id]]]
+                    +  [llength [learning_content::category::get_all_objects \
+                        -category_id $subcategory_id -content_type "::xowiki::PageInstance" -show_all_p $show_all_p]]]
             if { $child_list } {
 
                 if {$open_category_id == $subcategory_id || \
@@ -99,12 +109,12 @@ foreach category_id $categories {
                     -category_id $subcategory_id]
                 set subtotal 0
                 set subtotal [expr $subtotal \
-                    + [llength [category::get_objects \
-                        -category_id $subcategory_id]]]
+                    + [llength [learning_content::category::get_all_objects \
+                        -category_id $subcategory_id -content_type "::xowiki::PageInstance" -show_all_p $show_all_p]]]
                 foreach in_subcategory_id $in_subcategories {
                     set subtotal [expr $subtotal \
-                        + [llength [category::get_objects \
-                            -category_id $in_subcategory_id]]]
+                        + [llength [learning_content::category::get_all_objects \
+                            -category_id $in_subcategory_id -content_type "::xowiki::PageInstance" -show_all_p $show_all_p]]]
                 }
 
                 if { $subtotal > 0 } {
@@ -118,8 +128,8 @@ foreach category_id $categories {
                         set in_child_list [expr \
                             [category::count_children \
                                 -category_id $in_subcategory_id] \
-                            + [llength [category::get_objects \
-                                -category_id $in_subcategory_id]]]
+                            + [llength [learning_content::category::get_all_objects \
+                                -category_id $in_subcategory_id -content_type "::xowiki::PageInstance" -show_all_p $show_all_p]]]
                         if { $in_child_list } {
                             if {$open_category_id == $in_subcategory_id } {
                                 set is_sub_open true
