@@ -43,7 +43,7 @@ if { ![string equal [string trim [string tolower $name]] "glosario"] } {
         if {[exists_and_not_null new_cat]} {
             set temp "$return_url&new_cat=$new_cat"
             append temp "ad_returnredirect &parent_cat=$parent_cat"
-            ad_return_redirect $temp
+            ad_returnredirect $temp
         } else {
             ad_returnredirect $return_url
         }
