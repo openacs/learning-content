@@ -39,7 +39,7 @@ foreach initial $initials {
 append letter "%"
 set form_page_ids [db_list get_form_page_ids {}]
 
-set elements {}
+set elements [list]
 if { $admin_p } {
     lappend elements edit {
         label "[_ learning-content.edit]"
@@ -89,8 +89,8 @@ db_multirow -extend { definition edit_url delete_url count } \
     }
 }
 
-set bulk_action_vars {}
-set bulk_actions {}
+set bulk_action_vars [list]
+set bulk_actions [list]
 if { $admin_p } {
     lappend bulk_action_vars return_url
     lappend bulk_actions "[_ learning-content.delete]" "delete-glossary-word"\

@@ -69,7 +69,7 @@ ad_proc -public learning_content::update_page {
         set page_id [$page save]
         set result [list $page_id $page_name]
     } else {
-        set result {}
+        set result [list]
     }
     return $result
 }
@@ -88,7 +88,7 @@ ad_proc -public learning_content::insert_item_into_category {
 } {
     set category_id_list [category::get_id $category_name]
     set this_tree [category_tree::get_tree $tree_id]
-    set categories {}
+    set categories [list]
     foreach category $this_tree {
         set category_id [lindex $category 0]
         lappend categories $category_id
@@ -127,7 +127,7 @@ ad_proc -public learning_content::create_target_category_tree_and_map_source_cat
     set tree_list [category_tree::get_mapped_trees $package_id]
     set tree_id   [lindex [lindex $tree_list 0] 0]
     category_tree::unmap -tree_id $tree_id -object_id $package_id
-    set orig_new_category_map {}
+    set orig_new_category_map [list]
     set new_tree_id [category_tree::add  \
                         -name "\#learning-content.choose_location\#"  \
                         -context_id $package_id ]
@@ -250,7 +250,7 @@ ad_proc -public learning_content::parse_for_fs {
     {-original_package_id:required}
     {-new_package_id:required}
 } {
-    set match_list {}
+    set match_list [list]
     set list_of_expressions [split $page_content ">"]
     foreach expression $list_of_expressions {
         if {[regexp \
@@ -336,7 +336,7 @@ ad_proc -public learning_content::get_categories {
     Get Categories from Tree Id
 } {
     set locale "en_US"
-    set result {}
+    set result [list]
     set result [db_list get_categories ""]
     return $result
 }
@@ -576,8 +576,8 @@ ad_proc -public learning_content::copy {
     }
 
     #getting the content categories
-    set categories {}
-    set original_categories {}
+    set categories [list]
+    set original_categories [list]
 
     foreach tree [category_tree::get_mapped_trees $package_id] {
         foreach { tree_id tree_name } $tree {
@@ -628,7 +628,7 @@ ad_proc -public learning_content::copy {
         set msg "Error: $error"
         set result 0
     } else {
-        set objects {}
+        set objects [list]
         foreach o [::xowiki::Page allinstances] {
             if {![info exists preexists($o)]} {lappend objects $o}
         }
