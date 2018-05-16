@@ -41,7 +41,7 @@ ad_proc -public learning_content::apm::package_mount {
 
    ::xowiki::Package initialize -package_id $package_id
 
-    set root_directory [get_server_root]
+    set root_directory [acs_root_dir]
     set prototypes_path "$root_directory/packages/learning-content/www/prototypes/"
     foreach prototype_page [glob \
         $prototypes_path/*.page] {
