@@ -59,7 +59,7 @@ ad_proc -public learning_content::update_page {
         set page [::xowiki::Package instantiate_page_from_id -item_id $page_item_id]
         set page_name [$page set name]
         $page destroy_on_cleanup
-    
+
         if { ![empty_string_p $content] } {
             $page set instance_attributes [list "contenido" $content]
         }
@@ -207,7 +207,7 @@ ad_proc -public learning_content::map_activity_objects {
     foreach object $objects_map {
         set item_id [lindex $object [expr [llength $object] - 1]]
         set item_name [lindex $object 0]
-        if { [learning_content::activity_exists_p -item_id $item_id] } { 
+        if { [learning_content::activity_exists_p -item_id $item_id] } {
             set new_item_id [db_string get_new_item_id { *SQL* } -default 0]
             learning_content::activity_new -item_id $new_item_id -activity_id 0
         }
@@ -218,7 +218,7 @@ ad_proc -public learning_content::copy_glossary_words_count {
     {-src_folder_id:required}
     {-dst_folder_id:required}
 } {
-    Copy the words count from the source instance of content 
+    Copy the words count from the source instance of content
     to a target instance
 } {
     db_foreach get_words_count { *SQL* } {
@@ -254,13 +254,13 @@ ad_proc -public learning_content::parse_for_fs {
     set list_of_expressions [split $page_content ">"]
     foreach expression $list_of_expressions {
         if {[regexp \
-		 /dotlrn(\[^"\]*)file-storage(\[^"\]*)(\\.)(...|....)(\") \
+                /dotlrn(\[^"\]*)file-storage(\[^"\]*)(\\.)(...|....)(\") \
             $expression one_match]} {
             set one_match [string trimright $one_match "\""]
             set this_match [list $one_match [learning_content::replace_path \
                 -original_path $one_match \
                 -original_package_id $original_package_id \
-                -new_package_id $new_package_id ] ]	
+                -new_package_id $new_package_id ] ]
             lappend match_list $this_match
         }
     }
@@ -298,7 +298,7 @@ ad_proc -public learning_content::replace_path {
     set new_fs_package_id $new_fs_node_info(package_id)
     set orig_root_folder [fs_get_root_folder  -package_id $orig_fs_package_id ]
     set new_root_folder [fs_get_root_folder  -package_id $new_fs_package_id ]
-    set fs_view_path [string range $original_path $view_start end] 
+    set fs_view_path [string range $original_path $view_start end]
     set fs_view_path [ns_urldecode $fs_view_path]
     set file_id [::content::item::get_id -item_path " $fs_view_path " \
                     -root_folder_id $orig_root_folder \
@@ -313,7 +313,7 @@ ad_proc -public learning_content::replace_path {
     set folder_list [split $fs_view_path "/"]
     set root_folder $new_root_folder
     foreach folder $folder_list {
-        set folder [ns_urldecode $folder] 
+        set folder [ns_urldecode $folder]
         set folder_id [fs::get_folder -name "$folder" -parent_id $root_folder]
         if { [empty_string_p $folder_id ] } {
             set root_folder [fs::new_folder -name "$folder" \
@@ -518,7 +518,7 @@ ad_proc -public learning_content::copy {
         dotlrn_community::add_applet_to_community \
             $dst_community_id dotlrn_learning_content
         set dst_package_id [db_string get_dst_package_id "" -default 0]
-	$dst_package_id destroy
+        $dst_package_id destroy
     }
 
     ::xowiki::Package initialize -parameter {
@@ -572,7 +572,7 @@ ad_proc -public learning_content::copy {
             [$item_id set name] [$item_id item_id] }" \n
     }
     foreach item_id $item_ids {
-	$item_id destroy
+        $item_id destroy
     }
 
     #getting the content categories
@@ -848,51 +848,51 @@ ad_proc -public learning_content::category::set_category_publish_state {
     -wiki_folder_id
     -state
 } {
-    
+
     set tree_list [learning_content::category::get_tree_levels -subtree_id $category_id -tree_id $tree_id]
     foreach one_category $tree_list {
-	set cat_id [lindex $one_category 0]
-	db_foreach select_page {
-	    select ci.item_id, r.revision_id, ci.name
-	    from category_object_map c, cr_items ci, cr_revisions r, xowiki_page p
-	    where c.object_id = ci.item_id and ci.parent_id = :wiki_folder_id
-	    and ci.content_type not in ('::xowiki::PageTemplate')
-	    and ci.name not in ('en:header_page','en:index','en:indexe')
-	    and r.revision_id = ci.live_revision
-	    and p.page_id = r.revision_id
-	    and category_id = :cat_id
-	    order by p.page_order} {
-		ns_cache flush xotcl_object_cache ::$item_id
-		ns_cache flush xotcl_object_cache ::$revision_id
-		
-		::xo::db::sql::content_item set_live_revision \
-		    -revision_id $revision_id \
-		    -publish_status $state
-		
-		if {$state ne "production"} {
-		    #  ::xowiki::notification::do_notifications
-		    #  -revision_id $revision_id
-		    #  ::xowiki::datasource $revision_id
-		} else {
-		    db_dml flush_syndication {delete from syndication where object_id = :revision_id}
-		}
-	    }
+        set cat_id [lindex $one_category 0]
+        db_foreach select_page {
+            select ci.item_id, r.revision_id, ci.name
+            from category_object_map c, cr_items ci, cr_revisions r, xowiki_page p
+            where c.object_id = ci.item_id and ci.parent_id = :wiki_folder_id
+            and ci.content_type not in ('::xowiki::PageTemplate')
+            and ci.name not in ('en:header_page','en:index','en:indexe')
+            and r.revision_id = ci.live_revision
+            and p.page_id = r.revision_id
+            and category_id = :cat_id
+            order by p.page_order} {
+            ns_cache flush xotcl_object_cache ::$item_id
+            ns_cache flush xotcl_object_cache ::$revision_id
+
+            ::xo::db::sql::content_item set_live_revision \
+                -revision_id $revision_id \
+                -publish_status $state
+
+            if {$state ne "production"} {
+                #  ::xowiki::notification::do_notifications
+                #  -revision_id $revision_id
+                #  ::xowiki::datasource $revision_id
+            } else {
+                db_dml flush_syndication {delete from syndication where object_id = :revision_id}
+            }
+        }
     }
 }
 
-ad_proc -public learning_content::category::get_ready_objects { 
+ad_proc -public learning_content::category::get_ready_objects {
     -category_id
     {-object_type ""}
     {-content_type ""}
     {-include_children:boolean}
 } {
     Returns a list of objects which are mapped to this category_id with publish_staus = ready
-    
+
     @param category_id CategoryID of the category we want to get the objects for
     @param object_type Limit the search for objects of this object type
     @param content_type Limit the search for objects of this content_type
     @param include_children Include child categories' objects as well. Not yet implemented
-    
+
     @author malte ()
     @creation-date Wed May 30 06:28:25 CEST 2007
 } {
@@ -903,12 +903,12 @@ ad_proc -public learning_content::category::get_ready_objects {
         set where_clause "and i.item_id = com.object_id and i.content_type = :content_type and i.publish_status = 'ready' and i.name not in ('en:header_page','en:index','en:indexe')"
     } elseif {$object_type ne ""} {
         set join_clause ", acs_objects o"
-        set where_clause "and o.object_id = com.object_id and o.object_type = :object_type"        
+        set where_clause "and o.object_id = com.object_id and o.object_type = :object_type"
     }
     return [db_list get_ready_objects {}]
 }
 
-ad_proc -public learning_content::category::get_all_objects { 
+ad_proc -public learning_content::category::get_all_objects {
     -category_id
     {-object_type ""}
     {-content_type ""}
@@ -916,7 +916,7 @@ ad_proc -public learning_content::category::get_all_objects {
     {-include_children:boolean}
 } {
     Returns a list of objects which are mapped to this category_id with publish_status = ready or production
-    
+
     @param category_id CategoryID of the category we want to get the objects for
     @param object_type Limit the search for objects of this object type
     @param content_type Limit the search for objects of this content_type
@@ -930,14 +930,14 @@ ad_proc -public learning_content::category::get_all_objects {
     set where_clause ""
     if {$content_type ne ""} {
         set join_clause ", cr_items i"
-	if {$show_all_p} {
-	    set where_clause "and i.item_id = com.object_id and i.content_type = :content_type and i.publish_status in ('production','ready') and i.name not in ('en:header_page','en:index','en:indexe')"
-	} else {
-	    set where_clause "and i.item_id = com.object_id and i.content_type = :content_type and i.publish_status = 'ready' and i.name not in ('en:header_page','en:index','en:indexe')"
-	}
+        if {$show_all_p} {
+            set where_clause "and i.item_id = com.object_id and i.content_type = :content_type and i.publish_status in ('production','ready') and i.name not in ('en:header_page','en:index','en:indexe')"
+        } else {
+            set where_clause "and i.item_id = com.object_id and i.content_type = :content_type and i.publish_status = 'ready' and i.name not in ('en:header_page','en:index','en:indexe')"
+        }
     } elseif {$object_type ne ""} {
         set join_clause ", acs_objects o"
-        set where_clause "and o.object_id = com.object_id and o.object_type = :object_type"        
+        set where_clause "and o.object_id = com.object_id and o.object_type = :object_type"
     }
     return [db_list get_all_objects {}]
 }
@@ -1085,3 +1085,9 @@ ad_proc -public learning_content::category::get_over_categories {
     set categories [db_list get_over_categories {*SQL*}]
     return $categories
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:
